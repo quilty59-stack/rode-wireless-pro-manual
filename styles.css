@@ -314,6 +314,54 @@ tr:nth-child(even) td {
   opacity: 0.8;
 }
 
+/* Diagrams */
+.diagram-container {
+  margin: 16px 0;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.diagram-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+}
+
+.legend {
+  margin-top: 12px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+
+.legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 16px;
+}
+
+.legend li {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.legend strong {
+  color: var(--rode-black);
+  background: #e2e8f0;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-right: 6px;
+  font-size: 0.85rem;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .header {
@@ -331,5 +379,8 @@ tr:nth-child(even) td {
   .step {
     flex-direction: column;
     gap: 10px;
+  }
+  .legend ul {
+    grid-template-columns: 1fr;
   }
 }
