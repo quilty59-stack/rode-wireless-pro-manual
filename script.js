@@ -1,34 +1,52 @@
-// Smooth scroll for TOC links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+// Navigation between views
+const views = document.querySelectorAll('.view');
+const navItems = document.querySelectorAll('.nav-item');
+const mainContent = document.getElementById('mainContent');
+
+function showView(viewId) {
+  views.forEach(v => v.classList.remove('active'));
+  const target = document.getElementById(viewId);
+  if (target) {
+    target.classList.add('active');
+    mainContent.scrollTop = 0;
+  }
+
+  // Update bottom nav active state
+  navItems.forEach(item => {
+    item.classList.toggle('active', item.dataset.view === viewId);
+  });
+}
+
+// Bottom nav clicks
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const viewId = item.dataset.view;
+    if (viewId) showView(viewId);
+  });
+});
+
+// Summary cards & quick actions
+document.querySelectorAll('[data-target]').forEach(el => {
+  el.addEventListener('click', () => {
+    const viewId = el.dataset.target;
+    const sectionId = el.dataset.section;
+    showView(viewId);
+
+    if (sectionId) {
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
   });
 });
 
-// Optional: highlight current section on scroll
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.toc a');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    if (scrollY >= sectionTop - 120) {
-      current = section.getAttribute('id');
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
+// Prevent double-tap zoom on buttons
+document.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('touchend', e => {
+    e.preventDefault();
+    btn.click();
   });
 });

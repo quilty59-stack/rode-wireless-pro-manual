@@ -1,32 +1,24 @@
-# Mode d'emploi RØDE Wireless PRO
+# RØDE Wireless PRO – Guide App
 
-Guide simplifié interactif pour formateurs – système de micros sans fil professionnel.
+Application mobile-first du mode d'emploi simplifié RØDE Wireless PRO.
 
-## Contenu
+## Fonctionnalités
 
-- Allumage / extinction
-- Appairage automatique et manuel
-- Enregistrement embarqué 32-bit float
-- Direct Connect (iPhone + RØDE Capture)
-- Tableau des boutons et LED
+- **Interface type dashboard mobile** (Top App Bar + Bottom Navigation)
+- Accueil avec cartes résumé et actions rapides
+- Guide étape par étape
+- Schémas légendés officiels TX / RX
+- Conseils pratiques
+- Design responsive (mobile + aperçu desktop)
 
-## Déploiement
+## Déploiement Vercel
 
-### Sur Vercel (recommandé)
+1. Allez sur https://vercel.com/new
+2. Importez le dépôt `quilty59-stack/rode-wireless-pro-manual`
+3. Framework : **Other**
+4. Deploy
 
-1. Importez ce dépôt sur [vercel.com](https://vercel.com/new)
-2. Framework preset : **Other**
-3. Deploy !
-
-Ou via CLI :
-
-```bash
-npx vercel
-```
-
-### En local
-
-Ouvrez simplement `index.html` dans un navigateur, ou :
+Ou en local :
 
 ```bash
 npx serve .
@@ -40,5 +32,3 @@ npx serve .
 ├── script.js
 └── README.md
 ```
-
-Basé sur le guide utilisateur officiel RØDE.
